@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "bv"
+rootProject.name = "webtoapp"
 include ':app'

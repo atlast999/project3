@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BV</string>
+    <string name="app_name">Web to App</string>
+    <string name="search_hint">Enter to search</string>
 </resources>
