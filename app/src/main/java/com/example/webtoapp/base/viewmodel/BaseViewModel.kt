@@ -27,6 +27,10 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
         argsRef = argument
     }
 
+    open fun onReady() {
+
+    }
+
     protected fun navigate(direction: NavDirections) {
         viewModelScope.launch {
             mDirectionChanel.send(Direction.NavDirection(direction))

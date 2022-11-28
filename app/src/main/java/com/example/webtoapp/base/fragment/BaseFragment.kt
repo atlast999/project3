@@ -4,21 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.base.util.Direction
 import com.example.webtoapp.base.util.collectOnLifeCycle
 import com.example.webtoapp.base.viewmodel.BaseViewModel
-import com.example.webtoapp.ui.splash.SplashFragmentDirections
 
 abstract class BaseFragment : Fragment() {
 
     protected abstract val viewModel: BaseViewModel
-    protected var binding: ViewDataBinding? = null
+    open var binding: ViewDataBinding? = null
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +51,6 @@ abstract class BaseFragment : Fragment() {
     abstract fun getViewModelVariable(): Int
 
 
-
     @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
@@ -68,6 +66,11 @@ abstract class BaseFragment : Fragment() {
             )
             executePendingBindings()
         }
+        viewModel.onReady()
+    }
+
+    protected fun toast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun handleDirection(direction: Direction) {
@@ -77,4 +80,5 @@ abstract class BaseFragment : Fragment() {
             is Direction.NavDirection -> navController.navigate(direction.direction)
         }
     }
+
 }
