@@ -10,9 +10,8 @@ import com.example.webtoapp.databinding.ItemWebAppBinding
 import com.example.webtoapp.model.WebAppInstance
 
 class WebAppAdapter(
-    diffCallback: DiffUtil.ItemCallback<WebAppInstance>,
     private val onOpenApp: (WebAppInstance) -> Unit,
-) : BindingPagingAdapter<WebAppInstance>(diffCallback) {
+) : BindingPagingAdapter<WebAppInstance>(WebAppDiffCallback) {
 
     override fun onCreateHolder(
         parent: ViewGroup,
@@ -37,5 +36,16 @@ class WebAppAdapter(
                 tvName.text = model.name
             }
         }
+    }
+
+    object WebAppDiffCallback : DiffUtil.ItemCallback<WebAppInstance>() {
+        override fun areItemsTheSame(oldItem: WebAppInstance, newItem: WebAppInstance): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: WebAppInstance, newItem: WebAppInstance): Boolean {
+            return oldItem == newItem
+        }
+
     }
 }

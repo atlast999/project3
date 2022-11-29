@@ -2,13 +2,13 @@ package com.example.webtoapp.base.bindings
 
 import android.view.View
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
 
 object TextBindingAdapter {
 
     @BindingAdapter("bindClearTextListener")
     @JvmStatic
-    fun View.bindOnClickClearText(source: MutableLiveData<String>?) {
+    fun View.bindOnClickClearText(source: MutableStateFlow<String>?) {
         if (source == null) {
             setOnClickListener(null)
         } else {

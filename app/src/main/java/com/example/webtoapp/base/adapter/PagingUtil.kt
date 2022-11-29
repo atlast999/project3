@@ -7,8 +7,8 @@ import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 
 fun <Param : Any, Result : Any> BaseViewModel.pagingFlow(
-    fetchBy: suspend (Param) -> PagingModel<Result>,
     params: Param,
+    fetchBy: suspend (Param) -> PagingModel<Result>,
 ) = Pager(
     config = PagingConfig(Paging.DEFAULT_PAGE_SIZE),
     initialKey = params,
@@ -18,7 +18,7 @@ fun <Param : Any, Result : Any> BaseViewModel.pagingFlow(
                 return params.key?.let { request ->
                     LoadResult.Page(
                         data = fetchBy.invoke(request).data,
-                        prevKey = request,
+                        prevKey = null,
                         nextKey = null,
                     )
                 } ?: LoadResult.Invalid()

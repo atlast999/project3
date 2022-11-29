@@ -15,8 +15,16 @@
         android:layout_height="match_parent">
 
         <include
+            android:id="@+id/layout_search"
             layout="@layout/layout_search"
-            app:query="@={vm.searchQuery}" />
+            app:query="@{vm.searchQuery}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_app"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/space_small"
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn"

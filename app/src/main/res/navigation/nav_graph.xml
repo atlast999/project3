@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/splash_fragment"
         android:name="com.example.webtoapp.ui.splash.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment">
         <action
             android:id="@+id/to_home_menu"
             app:destination="@id/home_fragment" />
@@ -17,5 +17,21 @@
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.webtoapp.ui.home.HomeFragment"
-        tools:layout="HomeFragment"/>
+        tools:layout="HomeFragment">
+
+        <action
+            android:id="@+id/to_browser"
+            app:destination="@+id/browser_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/browser_fragment"
+        android:name="com.example.webtoapp.ui.browser.BrowserFragment">
+
+        <argument
+            android:name="web_app"
+            app:argType="com.example.webtoapp.model.WebAppInstance" />
+
+    </fragment>
 </navigation>

@@ -6,7 +6,7 @@ object Paging {
 
 data class PagingModel<Model : Any>(
     val page: Int,
-    val size: Int,
+    val size: Int = Paging.DEFAULT_PAGE_SIZE,
     val total: Int,
     val data: List<Model>,
 )
