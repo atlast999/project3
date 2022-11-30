@@ -10,14 +10,20 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
             android:id="@+id/layout_search"
             layout="@layout/layout_search"
             app:query="@{vm.searchQuery}" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/prepend_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_app"
@@ -25,6 +31,12 @@
             android:layout_height="0dp"
             android:layout_margin="@dimen/space_small"
             android:layout_weight="1" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/append_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn"

@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.addCallback
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.webtoapp.BR
 import com.example.webtoapp.base.fragment.BaseFragment
@@ -30,6 +32,13 @@ class BrowserFragment : BaseFragment() {
             webView.settings.javaScriptEnabled = true
             webView.webViewClient = WebAppClient
             webView.loadUrl(navArgs.webApp.url)
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                if (webView.canGoBack()) {
+                    webView.goBack()
+                } else {
+                    findNavController().navigateUp()
+                }
+            }
         }
 
     override fun getViewModelVariable(): Int = BR.vm
