@@ -8,10 +8,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.webtoapp.BR
+import com.example.webtoapp.R
 import com.example.webtoapp.base.fragment.BaseFragment
+import com.example.webtoapp.base.util.UiText
 import com.example.webtoapp.databinding.FragmentHomeBinding
 import com.example.webtoapp.ui.home.adapter.WebAppAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +38,7 @@ class HomeFragment : BaseFragment() {
                 }
             }
             btn.setOnClickListener {
-                toast(viewModel.searchQuery.value)
+                toast(UiText.from(viewModel.searchQuery.value))
             }
             viewLifecycleOwner.lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -55,6 +58,25 @@ class HomeFragment : BaseFragment() {
                 }
             }
         }
+
+    override fun onReady() {
+        super.onReady()
+        createOptionMenu(
+            onCreate = { menu, menuInflater ->
+                menu.clear()
+                menuInflater.inflate(R.menu.home_menu, menu)
+            },
+            onItemSelected = { menuItem ->
+                if (menuItem.itemId == R.id.item_new_app) {
+                    findNavController().navigate(
+                        HomeFragmentDirections.toNewApp()
+                    )
+                    return@createOptionMenu true
+                }
+                return@createOptionMenu false
+            }
+        )
+    }
 
     override fun getViewModelVariable(): Int = BR.vm
 }

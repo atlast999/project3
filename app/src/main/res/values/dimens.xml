@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="space_small">2dp</dimen>
-
     <dimen name="space_small_x">4dp</dimen>
-
     <dimen name="space_small_xx">6dp</dimen>
-
     <dimen name="space_small_xxx">8dp</dimen>
-
     <dimen name="space_medium">10dp</dimen>
-
     <dimen name="space_large">20dp</dimen>
 
     <dimen name="icon_size">35dp</dimen>
-
     <dimen name="image_size">70dp</dimen>
+
+    <dimen name="radius_round">32dp</dimen>
+    <dimen name="radius_large">16dp</dimen>
+    <dimen name="radius_medium">8dp</dimen>
+    <dimen name="radius_small">3dp</dimen>
+
+    <dimen name="elevation_small">1dp</dimen>
+    <dimen name="elevation_medium">3dp</dimen>
+    <dimen name="elevation_large">6dp</dimen>
 </resources>

@@ -1,12 +1,17 @@
-package com.example.webtoapp.base.fragment
+package com.example.webtoapp.base.dialog
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.widget.Toast
 import androidx.annotation.CallSuper
-import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.base.util.Direction
@@ -14,7 +19,7 @@ import com.example.webtoapp.base.util.UiText
 import com.example.webtoapp.base.util.collectOnLifeCycle
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseDialog : DialogFragment() {
 
     protected abstract val viewModel: BaseViewModel
     open var binding: ViewDataBinding? = null
@@ -25,7 +30,7 @@ abstract class BaseFragment : Fragment() {
         viewModel.run {
             onBind(arguments)
             directionFlow.collectOnLifeCycle(
-                owner = this@BaseFragment,
+                owner = this@BaseDialog,
                 state = Lifecycle.State.CREATED,
             ) {
                 handleDirection(it)
@@ -47,7 +52,7 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.run {
-            lifecycleOwner = this@BaseFragment
+            lifecycleOwner = this@BaseDialog
             setVariable(
                 getViewModelVariable(), viewModel
             )
@@ -55,6 +60,18 @@ abstract class BaseFragment : Fragment() {
         }
         viewModel.onReady()
         this.onReady()
+    }
+
+    @CallSuper
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.run {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
     }
 
     abstract fun getViewModelVariable(): Int
@@ -66,23 +83,13 @@ abstract class BaseFragment : Fragment() {
 
     open fun onReady() {}
 
-    protected fun createOptionMenu(
-        onCreate: (Menu, MenuInflater) -> Unit,
-        onItemSelected: (MenuItem) -> Boolean = { false }
-    ) {
-        requireActivity().addMenuProvider(
-            object : MenuProvider {
-                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    onCreate.invoke(menu, menuInflater)
-                }
-
-                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                    return onItemSelected.invoke(menuItem)
-                }
-            },
-            viewLifecycleOwner,
-            Lifecycle.State.RESUMED,
-        )
+    @CallSuper
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return super.onCreateDialog(savedInstanceState).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setCancelable(false)
+            setCanceledOnTouchOutside(false)
+        }
     }
 
     @CallSuper
@@ -90,7 +97,6 @@ abstract class BaseFragment : Fragment() {
         super.onDestroyView()
         binding = null
     }
-
 
     protected fun toast(message: UiText) {
         Toast.makeText(requireContext(), message.getBy(requireContext()), Toast.LENGTH_SHORT).show()
@@ -103,5 +109,4 @@ abstract class BaseFragment : Fragment() {
             is Direction.NavDirection -> navController.navigate(direction.direction)
         }
     }
-
 }

@@ -20,8 +20,18 @@
         tools:layout="HomeFragment">
 
         <action
+            android:id="@+id/to_new_app"
+            app:destination="@+id/new_app_fragment" />
+
+        <action
             android:id="@+id/to_browser"
             app:destination="@+id/browser_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/new_app_fragment"
+        android:name="com.example.webtoapp.ui.newapp.NewAppDialog">
 
     </fragment>
 

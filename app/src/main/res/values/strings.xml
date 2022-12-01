@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Web to App</string>
     <string name="search_hint">Enter to search</string>
+    <string name="label_new_app">New app</string>
 </resources>
