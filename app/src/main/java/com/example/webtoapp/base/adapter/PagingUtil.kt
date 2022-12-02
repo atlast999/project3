@@ -2,36 +2,46 @@ package com.example.webtoapp.base.adapter
 
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import com.example.webtoapp.base.domain.Paging
 import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.base.viewmodel.BaseViewModel
+import kotlinx.coroutines.flow.Flow
 
 fun <Result : Any> BaseViewModel.pagingFlow(
-    params: PagingRequest,
+    request: PagingRequest,
     fetchBy: suspend (PagingRequest) -> PagingModel<Result>,
-) = Pager(
+): Flow<PagingData<Result>> = Pager(
     config = PagingConfig(
-        pageSize = params.size,
-//        maxSize = params.size * 3,
+        pageSize = request.size,
+        enablePlaceholders = false,
+        maxSize = request.size * 5,
     ),
     pagingSourceFactory = {
-        object : PagingSource<PagingRequest, Result>() {
-            override suspend fun load(params: LoadParams<PagingRequest>): LoadResult<PagingRequest, Result> {
-                return params.key?.let { request ->
+        object : PagingSource<Int, Result>() {
+            override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
+                val loadingPage = params.key ?: Paging.DEFAULT_STARTING_PAGE
+                return try {
+                    val data = fetchBy.invoke(request.apply {
+                        page = loadingPage
+                    }).data
+                    val previousKey =
+                        if (loadingPage == Paging.DEFAULT_STARTING_PAGE) null else loadingPage.dec()
+                    val nextKey = if (data.size < request.size) null else loadingPage.inc()
                     LoadResult.Page(
-                        data = fetchBy.invoke(request).data,
-                        prevKey = request.prevPage(),
-                        nextKey = request.nextPage(),
+                        data = data,
+                        prevKey = previousKey,
+                        nextKey = nextKey,
                     )
-                } ?: LoadResult.Invalid()
+                } catch (e: Exception) {
+                    LoadResult.Error(e)
+                }
             }
 
-            override fun getRefreshKey(state: PagingState<PagingRequest, Result>): PagingRequest? {
-                val position = state.anchorPosition ?: return params
+            override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
+                val position = state.anchorPosition ?: return null
                 return state.closestPageToPosition(position)?.let {
-                    it.nextKey?.apply {
-                        prevPage()
-                    }
+                    it.nextKey?.dec()
                 }
             }
         }

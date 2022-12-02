@@ -17,7 +17,7 @@ class HomeViewModel @Inject constructor(application: Application) : BaseViewMode
 
     val searchQuery = MutableStateFlow("adf")
     val webAppDataFlow = pagingFlow(
-        params = PagingRequest(),
+        request = PagingRequest(),
         fetchBy = { request ->
             repository.fetchAppList(request)
         }

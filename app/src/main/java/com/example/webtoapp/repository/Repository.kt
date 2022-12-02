@@ -11,6 +11,18 @@ import javax.inject.Inject
 class Repository @Inject constructor() {
     suspend fun fetchAppList(params: PagingRequest): PagingModel<WebAppInstance> {
         delay(500)
+        if (params.page == 3) return PagingModel(
+            params.page,
+            params.size,
+            listOf(
+                WebAppInstance(
+                    id = "123",
+                    url = "voz.vn",
+                    image = "fake",
+                    "VOZ",
+                )
+            )
+        )
         return params.run {
             page.times(size).let { start ->
                 start.until(start + size)
@@ -26,7 +38,6 @@ class Repository @Inject constructor() {
             PagingModel(
                 page = params.page,
                 size = params.size,
-                total = 1000,
                 data = data
             )
         }
