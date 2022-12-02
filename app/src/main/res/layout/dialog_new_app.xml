@@ -12,7 +12,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#16FA0000">
+        android:background="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,13 +28,88 @@
             android:paddingVertical="@dimen/space_large">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Hello world"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@string/label_new_app"
+                android:textSize="@dimen/font_large"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <include
+                android:id="@+id/layout_name"
+                layout="@layout/layout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                app:contentValue="@{vm.stateAppName}"
+                app:hint="@{@string/label_app_name}"
+                app:label="@{@string/label_app_name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label" />
+
+            <include
+                android:id="@+id/layout_url"
+                layout="@layout/layout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                app:contentValue="@{vm.stateAppUrl}"
+                app:hint="@{@string/label_app_url}"
+                app:label="@{@string/label_app_url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@string/label_app_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_url" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/app_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"
+                android:maxHeight="100dp"
+                android:src="@drawable/ic_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_negative"
+                style="@style/AppWidget.Button.Border"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@string/label_cancel"
+                app:layout_constraintEnd_toStartOf="@+id/btn_positive"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_image"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_positive"
+                style="@style/AppWidget.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_confirm"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_negative"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_negative"
+                app:layout_constraintTop_toTopOf="@+id/btn_negative"
+                app:layout_constraintWidth_percent="0.35" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

@@ -15,6 +15,7 @@ import com.example.webtoapp.BR
 import com.example.webtoapp.R
 import com.example.webtoapp.base.fragment.BaseFragment
 import com.example.webtoapp.base.util.UiText
+import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.FragmentHomeBinding
 import com.example.webtoapp.ui.home.adapter.WebAppAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,7 @@ class HomeFragment : BaseFragment() {
                     webAppAdapter = it
                 }
             }
-            btn.setOnClickListener {
+            btn.onSafeClickListener {
                 toast(UiText.from(viewModel.searchQuery.value))
             }
             viewLifecycleOwner.lifecycleScope.launch {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTextAppearance">
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="AppTextAppearance.TextInputLayout" />
+
+    <style name="AppTextAppearance.TextInputLayout.Label">
+        <item name="android:textColor">?colorOnBackground</item>
+    </style>
+
+    <style name="AppTextAppearance.TextInputLayout.Input">
+        <item name="android:textColor">?colorOnBackground</item>
+    </style>
+
+    <style name="AppTextAppearance.Button" parent="AppTextAppearance">
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="AppTextAppearance.Button.Border" parent="AppTextAppearance.Button">
+        <item name="android:textColor">?colorOnBackground</item>
+    </style>
+
+    <style name="AppWidget.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
+        <item name="boxStrokeWidth">@dimen/space_line</item>
+        <item name="boxStrokeWidthFocused">@dimen/space_small</item>
+        <item name="boxStrokeColor">?colorOnBackground</item>
+        <item name="expandedHintEnabled">false</item>
+        <item name="hintAnimationEnabled">false</item>
+        <item name="hintTextAppearance">@style/AppTextAppearance.TextInputLayout.Label</item>
+        <item name="suffixTextAppearance">@style/AppTextAppearance.TextInputLayout.Input</item>
+        <item name="hintTextColor">?colorOnBackground</item>
+        <item name="android:textColorHint">?colorOnBackground</item>
+        <item name="background">@drawable/shape_button</item>
+        <item name="backgroundTint">@color/bg_button_state_list</item>
+    </style>
+
+    <style name="AppWidget.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/common_button_height</item>
+        <item name="android:foreground">@drawable/ripple_fx_button</item>
+        <item name="android:background">@drawable/shape_button</item>
+        <item name="android:backgroundTint">@color/bg_button_state_list</item>
+        <item name="android:textAppearance">@style/AppTextAppearance.Button</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">@color/text_button_state_list</item>
+    </style>
+
+    <style name="AppWidget.Button.Border" parent="AppWidget.Button">
+        <item name="android:background">@drawable/shape_button_border</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="background">@drawable/shape_button_border</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:textAppearance">@style/AppTextAppearance.Button.Border</item>
+        <item name="android:textColor">?colorOnBackground</item>
+    </style>
+
+</resources>

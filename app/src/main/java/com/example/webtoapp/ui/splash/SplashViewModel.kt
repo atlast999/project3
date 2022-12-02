@@ -14,7 +14,7 @@ class SplashViewModel @Inject constructor(application: Application): BaseViewMod
     override fun onReady() {
         super.onReady()
         viewModelScope.launch {
-            delay(3000)
+            delay(500)
             navigate(
                 SplashFragmentDirections.toHomeMenu()
             )

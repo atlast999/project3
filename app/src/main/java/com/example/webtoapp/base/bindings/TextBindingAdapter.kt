@@ -2,6 +2,7 @@ package com.example.webtoapp.base.bindings
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import com.example.webtoapp.base.util.onSafeClickListener
 import kotlinx.coroutines.flow.MutableStateFlow
 
 object TextBindingAdapter {
@@ -12,7 +13,7 @@ object TextBindingAdapter {
         if (source == null) {
             setOnClickListener(null)
         } else {
-            setOnClickListener {
+            onSafeClickListener {
                 source.value = ""
             }
         }

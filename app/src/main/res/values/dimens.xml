@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="space_line">1dp</dimen>
+
     <dimen name="space_small">2dp</dimen>
     <dimen name="space_small_x">4dp</dimen>
     <dimen name="space_small_xx">6dp</dimen>
@@ -18,4 +21,10 @@
     <dimen name="elevation_small">1dp</dimen>
     <dimen name="elevation_medium">3dp</dimen>
     <dimen name="elevation_large">6dp</dimen>
+
+    <dimen name="font_medium">14sp</dimen>
+    <dimen name="font_large">30sp</dimen>
+
+    <dimen name="common_button_height">42dp</dimen>
+
 </resources>

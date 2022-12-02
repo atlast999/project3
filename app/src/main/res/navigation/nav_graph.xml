@@ -29,11 +29,11 @@
 
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/new_app_fragment"
         android:name="com.example.webtoapp.ui.newapp.NewAppDialog">
 
-    </fragment>
+    </dialog>
 
     <fragment
         android:id="@+id/browser_fragment"

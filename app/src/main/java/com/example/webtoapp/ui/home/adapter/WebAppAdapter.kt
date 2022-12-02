@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.webtoapp.R
 import com.example.webtoapp.base.adapter.BindingHolder
 import com.example.webtoapp.base.adapter.BindingPagingAdapter
+import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.ItemWebAppBinding
 import com.example.webtoapp.model.WebAppInstance
 
@@ -25,7 +26,7 @@ class WebAppAdapter(
 
         override fun onCreated() {
             super.onCreated()
-            binding.root.setOnClickListener {
+            binding.root.onSafeClickListener {
                 mModel?.let(onOpenApp)
             }
         }

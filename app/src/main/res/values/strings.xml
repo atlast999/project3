@@ -2,4 +2,9 @@
     <string name="app_name">Web to App</string>
     <string name="search_hint">Enter to search</string>
     <string name="label_new_app">New app</string>
+    <string name="label_app_name">App name</string>
+    <string name="label_app_url">App url</string>
+    <string name="label_app_image">App image</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_confirm">Confirm</string>
 </resources>

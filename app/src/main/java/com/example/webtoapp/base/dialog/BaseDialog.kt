@@ -62,14 +62,13 @@ abstract class BaseDialog : DialogFragment() {
         this.onReady()
     }
 
-    @CallSuper
-    override fun onResume() {
-        super.onResume()
-    }
-
     override fun onStart() {
         super.onStart()
         dialog?.window?.run {
+            setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
