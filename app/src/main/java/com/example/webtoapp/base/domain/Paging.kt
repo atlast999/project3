@@ -15,3 +15,4 @@ data class PagingModel<Model : Any>(
     val size: Int = Paging.DEFAULT_PAGE_SIZE,
     val data: List<Model>,
 )
+

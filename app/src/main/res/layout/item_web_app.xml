@@ -14,9 +14,9 @@
         android:padding="@dimen/space_large">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/app_image"
             android:layout_width="@dimen/image_size"
-            android:layout_height="@dimen/image_size"
-            android:src="@drawable/app_icon" />
+            android:layout_height="@dimen/image_size" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_name"

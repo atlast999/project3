@@ -8,6 +8,7 @@ import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.base.util.Direction
 import com.example.webtoapp.base.util.UiText
@@ -104,4 +105,36 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+}
+
+fun <T> Fragment.waitForBackStackEntryData(
+    key: String,
+    callback: (T) -> Unit,
+) {
+    val entry = findNavController().currentBackStackEntry ?: return
+    val observer = LifecycleEventObserver { _, event ->
+        if (event == Lifecycle.Event.ON_RESUME) {
+            entry.savedStateHandle.getLiveData<T>(key).let { liveResult ->
+                liveResult.observe(viewLifecycleOwner) { result ->
+                    result ?: return@observe
+                    callback.invoke(result)
+                    entry.savedStateHandle.remove<T>(key)
+                    liveResult.removeObservers(viewLifecycleOwner)
+                }
+            }
+        }
+    }
+    entry.lifecycle.addObserver(observer)
+    viewLifecycleOwner.lifecycle.addObserver(LifecycleEventObserver { _, event ->
+        if (event == Lifecycle.Event.ON_DESTROY) {
+            entry.lifecycle.removeObserver(observer)
+        }
+    })
+}
+
+fun <T> Fragment.finishWithBackStackEntryData(key: String, data: T) {
+    findNavController().run {
+        previousBackStackEntry?.savedStateHandle?.set(key, data)
+        navigateUp()
+    }
 }

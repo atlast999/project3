@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.webtoapp.R
 import com.example.webtoapp.base.adapter.BindingHolder
 import com.example.webtoapp.base.adapter.BindingPagingAdapter
+import com.example.webtoapp.base.bindings.ImageBindingAdapter.setImage
 import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.ItemWebAppBinding
 import com.example.webtoapp.model.WebAppInstance
@@ -35,6 +36,7 @@ class WebAppAdapter(
             super.bind(model)
             binding.apply {
                 tvName.text = model.name
+                appImage.setImage(model.image)
             }
         }
     }

@@ -4,9 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -14,13 +11,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.webtoapp.BR
 import com.example.webtoapp.R
 import com.example.webtoapp.base.fragment.BaseFragment
+import com.example.webtoapp.base.fragment.waitForBackStackEntryData
 import com.example.webtoapp.base.util.UiText
+import com.example.webtoapp.base.util.collectLatestOnLifeCycle
+import com.example.webtoapp.base.util.collectOnLifeCycle
 import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.FragmentHomeBinding
+import com.example.webtoapp.model.WebAppInstance
 import com.example.webtoapp.ui.home.adapter.WebAppAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
@@ -41,22 +40,14 @@ class HomeFragment : BaseFragment() {
             btn.onSafeClickListener {
                 toast(UiText.from(viewModel.searchQuery.value))
             }
-            viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    webAppAdapter.loadStateFlow.collect {
-                        prependProgress.isVisible =
-                            it.source.prepend is LoadState.Loading || it.source.refresh is LoadState.Loading
-                        appendProgress.isVisible = it.source.append is LoadState.Loading
+            webAppAdapter.loadStateFlow.collectOnLifeCycle(viewLifecycleOwner) {
+                prependProgress.isVisible =
+                    it.source.prepend is LoadState.Loading || it.source.refresh is LoadState.Loading
+                appendProgress.isVisible = it.source.append is LoadState.Loading
 
-                    }
-                }
             }
-            viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                    viewModel.webAppDataFlow.collectLatest {
-                        webAppAdapter.submitData(it)
-                    }
-                }
+            viewModel.webAppDataFlow.collectLatestOnLifeCycle(viewLifecycleOwner) {
+                webAppAdapter.submitData(it)
             }
         }
 
@@ -69,6 +60,9 @@ class HomeFragment : BaseFragment() {
             },
             onItemSelected = { menuItem ->
                 if (menuItem.itemId == R.id.item_new_app) {
+                    waitForBackStackEntryData<WebAppInstance>(key = "NEW_APP") {
+                        viewModel.onNewAppAdded(it)
+                    }
                     findNavController().navigate(
                         HomeFragmentDirections.toNewApp()
                     )

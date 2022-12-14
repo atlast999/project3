@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -36,6 +37,18 @@ fun <T> Flow<T>.collectLatestOnLifeCycle(
                     collector.invoke(it)
                 }
             }
+        }
+    }
+}
+
+
+fun <T> Flow<T>.collectLatestInScope(
+    scope: CoroutineScope,
+    collector: suspend (T) -> Unit
+) {
+    scope.launch {
+        this@collectLatestInScope.collectLatest {
+            collector.invoke(it)
         }
     }
 }
