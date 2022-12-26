@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.webtoapp.ui.share.ShareCollectionViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/space_large"
+            android:background="@drawable/shape_button"
+            android:backgroundTint="@android:color/white"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:elevation="@dimen/elevation_medium"
+            android:paddingHorizontal="@dimen/space_large"
+            android:paddingVertical="@dimen/space_large">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@string/label_menu_share_collection"
+                android:textSize="@dimen/font_large"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/layout_name"
+                layout="@layout/layout_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                app:contentValue="@{vm.stateCollectionName}"
+                app:hint="@{@string/label_collection_name}"
+                app:label="@{@string/label_collection_name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_negative"
+                style="@style/AppWidget.Button.Border"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_medium"
+                android:text="@string/label_cancel"
+                app:layout_constraintEnd_toStartOf="@+id/btn_positive"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_name"
+                app:layout_constraintWidth_percent="0.35" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btn_positive"
+                style="@style/AppWidget.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_confirm"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_negative"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_negative"
+                app:layout_constraintTop_toTopOf="@+id/btn_negative"
+                app:layout_constraintWidth_percent="0.35" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

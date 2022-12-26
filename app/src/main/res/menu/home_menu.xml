@@ -6,4 +6,10 @@
         android:icon="@drawable/icon_add"
         android:title="@string/label_new_app"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/item_share_collection"
+        android:title="@string/label_menu_share_collection" />
+    <item
+        android:id="@+id/item_get_collection"
+        android:title="@string/label_menu_find_collections" />
 </menu>

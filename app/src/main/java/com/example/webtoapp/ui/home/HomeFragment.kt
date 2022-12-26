@@ -12,10 +12,8 @@ import com.example.webtoapp.BR
 import com.example.webtoapp.R
 import com.example.webtoapp.base.fragment.BaseFragment
 import com.example.webtoapp.base.fragment.waitForBackStackEntryData
-import com.example.webtoapp.base.util.UiText
 import com.example.webtoapp.base.util.collectLatestOnLifeCycle
 import com.example.webtoapp.base.util.collectOnLifeCycle
-import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.FragmentHomeBinding
 import com.example.webtoapp.model.WebAppInstance
 import com.example.webtoapp.ui.home.adapter.WebAppAdapter
@@ -37,9 +35,6 @@ class HomeFragment : BaseFragment() {
                     webAppAdapter = it
                 }
             }
-            btn.onSafeClickListener {
-                toast(UiText.from(viewModel.searchQuery.value))
-            }
             webAppAdapter.loadStateFlow.collectOnLifeCycle(viewLifecycleOwner) {
                 prependProgress.isVisible =
                     it.source.prepend is LoadState.Loading || it.source.refresh is LoadState.Loading
@@ -59,14 +54,27 @@ class HomeFragment : BaseFragment() {
                 menuInflater.inflate(R.menu.home_menu, menu)
             },
             onItemSelected = { menuItem ->
-                if (menuItem.itemId == R.id.item_new_app) {
-                    waitForBackStackEntryData<WebAppInstance>(key = "NEW_APP") {
-                        viewModel.onNewAppAdded(it)
+                when (menuItem.itemId) {
+                    R.id.item_new_app -> {
+                        waitForBackStackEntryData<WebAppInstance>(key = "NEW_APP") {
+                            viewModel.onNewAppAdded(it)
+                        }
+                        findNavController().navigate(
+                            HomeFragmentDirections.toNewApp()
+                        )
+                        return@createOptionMenu true
                     }
-                    findNavController().navigate(
-                        HomeFragmentDirections.toNewApp()
-                    )
-                    return@createOptionMenu true
+                    R.id.item_share_collection -> {
+                        findNavController().navigate(
+                            HomeFragmentDirections.toShare()
+                        )
+                        return@createOptionMenu true
+                    }
+                    R.id.item_get_collection -> {
+                        findNavController().navigate(
+                            HomeFragmentDirections.toFindCollection()
+                        )
+                    }
                 }
                 return@createOptionMenu false
             }

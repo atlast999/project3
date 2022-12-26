@@ -1,5 +1,6 @@
 package com.example.webtoapp.base.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.CallSuper
@@ -51,6 +52,9 @@ abstract class BindingHolder<Model : Any, ViewBinding : ViewDataBinding>(
 
     protected var binding: ViewBinding
         private set
+
+    protected val viewContext: Context
+        get() = itemView.context
 
     open fun onCreated() {}
 

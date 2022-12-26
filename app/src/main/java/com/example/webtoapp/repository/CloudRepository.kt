@@ -2,6 +2,7 @@ package com.example.webtoapp.repository
 
 import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
+import com.example.webtoapp.model.AppCollection
 import com.example.webtoapp.model.WebAppInstance
 import com.example.webtoapp.repository.service.ApiService
 import kotlinx.coroutines.delay
@@ -39,5 +40,9 @@ class CloudRepository(private val service: ApiService) : ICloudRepository {
                 data = data
             )
         }
+    }
+
+    suspend fun fetchCollections(params: PagingRequest): PagingModel<AppCollection> {
+        TODO("Not implemented")
     }
 }

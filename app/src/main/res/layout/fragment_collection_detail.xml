@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.example.webtoapp.ui.home.HomeViewModel" />
+            type="com.example.webtoapp.ui.collections.detail.CollectionDetailViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -19,12 +19,6 @@
             layout="@layout/layout_search"
             app:query="@{vm.searchQuery}" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/prepend_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_app"
             android:layout_width="match_parent"
@@ -32,11 +26,10 @@
             android:layout_margin="@dimen/space_small"
             android:layout_weight="1" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/append_progress"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_take"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true" />
-
+            android:text="@string/label_talk_collection" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

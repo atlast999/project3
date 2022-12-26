@@ -7,4 +7,9 @@
     <string name="label_app_image">App image</string>
     <string name="label_cancel">Cancel</string>
     <string name="label_confirm">Confirm</string>
+    <string name="label_menu_share_collection">Share your collection</string>
+    <string name="label_menu_find_collections">Find other collections</string>
+    <string name="label_collection_name">Collection name</string>
+    <string name="format_collection_owner">Owner: %s</string>
+    <string name="label_talk_collection">Take this collection</string>
 </resources>

@@ -10,3 +10,9 @@ data class WebAppInstance(
     val image: String,
     val name: String,
 ) : Parcelable
+
+data class AppCollection(
+    val id: String,
+    val name: String,
+    val owner: String,
+)

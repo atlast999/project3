@@ -26,6 +26,12 @@
         <action
             android:id="@+id/to_browser"
             app:destination="@+id/browser_fragment" />
+        <action
+            android:id="@+id/to_share"
+            app:destination="@id/share_fragment" />
+        <action
+            android:id="@+id/to_find_collection"
+            app:destination="@id/find_collection_fragment" />
 
     </fragment>
 
@@ -44,4 +50,25 @@
             app:argType="com.example.webtoapp.model.WebAppInstance" />
 
     </fragment>
+
+    <dialog
+        android:id="@+id/share_fragment"
+        android:name="com.example.webtoapp.ui.share.ShareCollectionDialog" />
+
+    <fragment
+        android:id="@+id/find_collection_fragment"
+        android:name="com.example.webtoapp.ui.collections.FindCollectionFragment">
+        <action
+            android:id="@+id/to_detail"
+            app:destination="@id/collection_detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/collection_detail_fragment"
+        android:name="com.example.webtoapp.ui.collections.detail.CollectionDetailFragment">
+        <argument
+            android:name="collection"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
