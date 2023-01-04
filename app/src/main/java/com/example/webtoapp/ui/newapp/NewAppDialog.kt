@@ -34,7 +34,7 @@ class NewAppDialog : BaseDialog() {
                 finishWithBackStackEntryData(
                     key = "NEW_APP",
                     data = WebAppInstance(
-                        id = "1",
+                        id = "",
                         url = viewModel.stateAppUrl.value,
                         image = viewModel.stateAppImage.value ?: "",
                         name = viewModel.stateAppName.value,

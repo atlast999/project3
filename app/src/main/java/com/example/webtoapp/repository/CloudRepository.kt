@@ -3,12 +3,10 @@ package com.example.webtoapp.repository
 import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.model.WebAppInstance
-import dagger.hilt.android.scopes.ViewModelScoped
+import com.example.webtoapp.repository.service.ApiService
 import kotlinx.coroutines.delay
-import javax.inject.Inject
 
-@ViewModelScoped
-class Repository @Inject constructor() {
+class CloudRepository(private val service: ApiService) : ICloudRepository {
     suspend fun fetchAppList(params: PagingRequest): PagingModel<WebAppInstance> {
         delay(500)
         if (params.page == 3) return PagingModel(

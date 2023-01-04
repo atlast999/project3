@@ -6,7 +6,7 @@ import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 import com.example.webtoapp.model.WebAppInstance
-import com.example.webtoapp.repository.Repository
+import com.example.webtoapp.repository.CloudRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
 
     @Inject
-    lateinit var repository: Repository
+    lateinit var repository: CloudRepository
 
     private val fakeData = MutableStateFlow(
         listOf(
