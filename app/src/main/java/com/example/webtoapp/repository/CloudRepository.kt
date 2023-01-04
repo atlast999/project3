@@ -2,47 +2,44 @@ package com.example.webtoapp.repository
 
 import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
-import com.example.webtoapp.model.AppCollection
-import com.example.webtoapp.model.WebAppInstance
+import com.example.webtoapp.model.*
 import com.example.webtoapp.repository.service.ApiService
-import kotlinx.coroutines.delay
 
 class CloudRepository(private val service: ApiService) : ICloudRepository {
-    suspend fun fetchAppList(params: PagingRequest): PagingModel<WebAppInstance> {
-        delay(500)
-        if (params.page == 3) return PagingModel(
-            params.page,
-            params.size,
-            listOf(
-                WebAppInstance(
-                    id = "123",
-                    url = "voz.vn",
-                    image = "fake",
-                    "VOZ",
-                )
-            )
-        )
-        return params.run {
-            page.times(size).let { start ->
-                start.until(start + size)
-            }
-        }.map { index ->
-            WebAppInstance(
-                id = index.toString(),
-                url = "google.com",
-                image = "fake",
-                name = "item number $index (from page ${params.page})"
-            )
-        }.let { data ->
-            PagingModel(
-                page = params.page,
-                size = params.size,
-                data = data
-            )
-        }
+    override suspend fun signup(request: AuthenticationRequest): AuthenticationResponse {
+        return service.signup(request).data
     }
 
-    suspend fun fetchCollections(params: PagingRequest): PagingModel<AppCollection> {
-        TODO("Not implemented")
+    override suspend fun login(request: AuthenticationRequest): AuthenticationResponse {
+        return service.login(request).data
     }
+
+    override suspend fun createWebApp(request: WebAppInstance) {
+        service.createWebApp(request)
+    }
+
+    override suspend fun getMyList(request: PagingRequest): PagingModel<WebAppInstance> {
+        return service.getMyList(request.buildQuery()).data
+    }
+
+    override suspend fun shareMyList(request: ShareMyWebAppListRequest) {
+        service.shareMyList(request)
+    }
+
+    override suspend fun getCollectionList(request: PagingRequest): PagingModel<AppCollection> {
+        return service.getCollectionList(request.buildQuery()).data
+    }
+
+    override suspend fun getCollectionDetail(
+        collectionId: String,
+        request: PagingRequest
+    ): PagingModel<WebAppInstance> {
+        return service.getCollectionDetail(collectionId, request.buildQuery()).data
+    }
+
+    override suspend fun takeCollection(collectionId: String) {
+        service.takeCollection(collectionId)
+    }
+
+
 }

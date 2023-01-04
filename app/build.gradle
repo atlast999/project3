@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.webtoapp"
-        minSdk 23
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -24,10 +24,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "PRIMARY_API_GATEWAY", PRIMARY_API_GATEWAY)
         }
         debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "PRIMARY_API_GATEWAY", PRIMARY_API_GATEWAY)
         }
     }
     compileOptions {
@@ -73,6 +75,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }
 
 kapt {

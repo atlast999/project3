@@ -1,11 +1,11 @@
 package com.example.webtoapp
 
-import android.app.Application
+import com.example.webtoapp.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class PortalApplication: Application() {
+class PortalApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()

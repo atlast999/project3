@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.text.InputType" />
 
         <variable
             name="label"
@@ -15,6 +18,10 @@
         <variable
             name="contentValue"
             type="kotlinx.coroutines.flow.MutableStateFlow&lt;String>" />
+
+        <variable
+            name="inputType"
+            type="Integer" />
     </data>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -22,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@{label}"
+        app:passwordToggleEnabled="@{inputType == InputType.TYPE_TEXT_VARIATION_PASSWORD}"
         tools:hint="Label">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -29,6 +37,7 @@
             android:layout_height="wrap_content"
             android:hint="@{hint}"
             android:text="@={contentValue}"
+            app:bindInputType="@{inputType}"
             tools:hint="Content" />
 
     </com.google.android.material.textfield.TextInputLayout>
