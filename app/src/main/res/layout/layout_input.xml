@@ -23,13 +23,13 @@
             name="inputType"
             type="Integer" />
     </data>
+<!--    app:passwordToggleEnabled="@{inputType == InputType.TYPE_TEXT_VARIATION_PASSWORD}"-->
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/AppWidget.TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@{label}"
-        app:passwordToggleEnabled="@{inputType == InputType.TYPE_TEXT_VARIATION_PASSWORD}"
         tools:hint="Label">
 
         <com.google.android.material.textfield.TextInputEditText

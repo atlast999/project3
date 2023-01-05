@@ -22,9 +22,9 @@ fun <Result : Any> BaseViewModel.pagingFlow(
     }
     return Pager(
         config = PagingConfig(
-            pageSize = request.size,
+            pageSize = request.pageSize,
             enablePlaceholders = false,
-            maxSize = request.size * 5,
+            maxSize = request.pageSize * 5,
         ),
         pagingSourceFactory = {
             object : PagingSource<Int, Result>() {
@@ -36,7 +36,7 @@ fun <Result : Any> BaseViewModel.pagingFlow(
                         }).data
                         val previousKey =
                             if (loadingPage == Paging.DEFAULT_STARTING_PAGE) null else loadingPage.dec()
-                        val nextKey = if (data.size < request.size) null else loadingPage.inc()
+                        val nextKey = if (data.size < request.pageSize) null else loadingPage.inc()
                         LoadResult.Page(
                             data = data,
                             prevKey = previousKey,

@@ -7,6 +7,7 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/Clickable"
         android:layout_width="match_parent"
         android:gravity="center_horizontal"
         android:layout_height="wrap_content"

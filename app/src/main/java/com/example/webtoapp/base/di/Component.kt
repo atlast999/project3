@@ -31,13 +31,21 @@ object RepositoryModule {
     @Singleton
     fun provideCloudRepository(
         apiService: ApiService,
-    ): ICloudRepository = CloudRepository(apiService)
+        credentialManager: ICredentialManager,
+    ): ICloudRepository = CloudRepository(apiService, credentialManager)
 
+    @Provides
     @Singleton
     fun provideApiService(
         @ApplicationContext context: Context,
-    ): ApiService = createService(BuildConfig.PRIMARY_API_GATEWAY)
+        credentialManager: ICredentialManager,
+    ): ApiService = createService(BuildConfig.PRIMARY_API_GATEWAY, credentialManager)
 }
 
-private inline fun <reified T> createService(endpoint: String) =
-    Network.createRetrofitInstance(endpoint).create<T>()
+private inline fun <reified T> createService(
+    endpoint: String,
+    credentialManager: ICredentialManager
+) = Network.createRetrofitInstance(
+    endpoint = endpoint,
+    credentialManager = credentialManager
+).create<T>()

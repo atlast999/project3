@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Clickable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/space_medium">
+        android:paddingHorizontal="@dimen/space_medium"
+        android:paddingTop="@dimen/space_medium">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/app_image"
             android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size" />
+            android:layout_height="@dimen/icon_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginStart="@dimen/space_medium"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/space_medium"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/app_image"
+            app:layout_constraintStart_toEndOf="@+id/app_image"
+            app:layout_constraintTop_toTopOf="@+id/app_image"
             tools:text="Facebook" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_line"
+            android:layout_marginTop="@dimen/space_small"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/app_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

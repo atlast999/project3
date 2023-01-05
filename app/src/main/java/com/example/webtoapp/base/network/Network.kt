@@ -4,6 +4,7 @@ import android.app.Application
 import android.net.Uri
 import androidx.annotation.IntRange
 import com.example.webtoapp.base.BaseApplication
+import com.example.webtoapp.base.credential.ICredentialManager
 import com.google.gson.GsonBuilder
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -20,10 +21,11 @@ object Network {
     fun createRetrofitInstance(
         endpoint: String,
         converterFactory: Converter.Factory = gsonConverter(),
-    ) = Retrofit.Builder()
+        credentialManager: ICredentialManager,
+    ): Retrofit = Retrofit.Builder()
         .baseUrl(endpoint)
         .addConverterFactory(converterFactory)
-        .client(okHttpClient())
+        .client(okHttpClient(credentialManager))
         .build()
 
     private fun gsonConverter(): GsonConverterFactory = GsonConverterFactory.create(
@@ -33,9 +35,11 @@ object Network {
     )
 
     private fun okHttpClient(
+        credentialManager: ICredentialManager,
     ): OkHttpClient = OkHttpClient.Builder()
         .cache(defaultCache(BaseApplication.getInstance()))
         .addInterceptor(defaultLogger(BaseApplication.getInstance()))
+        .addInterceptor(AuthenticationInterceptor(credentialManager))
         .readTimeout(Duration.ofSeconds(30))
         .connectTimeout(Duration.ofSeconds(30))
         .build()

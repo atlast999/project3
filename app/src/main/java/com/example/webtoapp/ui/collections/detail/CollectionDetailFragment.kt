@@ -33,7 +33,7 @@ class CollectionDetailFragment : BaseFragment() {
                 collectionDetailAdapter.submitData(it)
             }
             btnTake.onSafeClickListener {
-
+                viewModel.takeCollection()
             }
         }
 }

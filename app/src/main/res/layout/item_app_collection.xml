@@ -3,11 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/Clickable"
+        android:paddingHorizontal="@dimen/space_medium"
+        android:paddingTop="@dimen/space_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textSize="@dimen/font_medium_x"
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,6 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Owner: hoannt" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_line"
+            android:layout_marginTop="@dimen/space_small"
+            android:background="@color/black" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

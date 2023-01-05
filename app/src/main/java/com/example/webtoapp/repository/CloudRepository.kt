@@ -1,17 +1,23 @@
 package com.example.webtoapp.repository
 
+import com.example.webtoapp.base.credential.ICredentialManager
 import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.model.*
 import com.example.webtoapp.repository.service.ApiService
 
-class CloudRepository(private val service: ApiService) : ICloudRepository {
+class CloudRepository(
+    private val service: ApiService,
+    private val credentialManager: ICredentialManager,
+) : ICloudRepository {
     override suspend fun signup(request: AuthenticationRequest): AuthenticationResponse {
         return service.signup(request).data
     }
 
     override suspend fun login(request: AuthenticationRequest): AuthenticationResponse {
-        return service.login(request).data
+        return service.login(request).data.also {
+            credentialManager.saveToken(it.token)
+        }
     }
 
     override suspend fun createWebApp(request: WebAppInstance) {

@@ -4,18 +4,18 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 object Paging {
-    const val DEFAULT_STARTING_PAGE = 0
+    const val DEFAULT_STARTING_PAGE = 1
     const val DEFAULT_PAGE_SIZE = 20
 }
 
 open class PagingRequest(
     var page: Int = Paging.DEFAULT_STARTING_PAGE,
-    var size: Int = Paging.DEFAULT_PAGE_SIZE
+    var pageSize: Int = Paging.DEFAULT_PAGE_SIZE
 ) : IParamRequest {
     override fun buildQuery(): Map<String, String> {
         return buildMap {
             put("page", page.toString())
-            put("size", size.toString())
+            put("size", pageSize.toString())
         }
     }
 }
