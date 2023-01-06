@@ -11,3 +11,7 @@ data class BaseResponse<T>(
     @SerializedName("message") @Expose val message: String,
     @SerializedName("data") @Expose val data: T,
 )
+
+data class FailedResponse(
+    @SerializedName("message") @Expose val message: String,
+)

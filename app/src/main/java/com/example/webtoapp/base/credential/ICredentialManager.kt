@@ -5,4 +5,5 @@ interface ICredentialManager {
     fun saveUserId(userId: String)
     fun getToken(): String?
     fun saveToken(token: String)
+    fun clear()
 }

@@ -12,4 +12,7 @@
     <string name="label_collection_name">Collection name</string>
     <string name="format_collection_owner">Owner: %s</string>
     <string name="label_talk_collection">Take this collection</string>
+    <string name="msg_error_default">Something went wrong!</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_signup">Signup</string>
 </resources>

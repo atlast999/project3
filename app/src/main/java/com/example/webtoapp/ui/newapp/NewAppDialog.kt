@@ -11,9 +11,9 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.BR
+import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.base.dialog.BaseDialog
 import com.example.webtoapp.base.fragment.finishWithBackStackEntryData
-import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.DialogNewAppBinding
 import com.example.webtoapp.model.WebAppInstance
 import dagger.hilt.android.AndroidEntryPoint

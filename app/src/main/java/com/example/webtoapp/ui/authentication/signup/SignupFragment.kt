@@ -1,28 +1,24 @@
-package com.example.webtoapp.ui.authentication.login
+package com.example.webtoapp.ui.authentication.signup
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.BR
 import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.base.fragment.BaseFragment
-import com.example.webtoapp.databinding.FragmentLoginBinding
+import com.example.webtoapp.databinding.FragmentSignupBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment() {
-    override val viewModel by viewModels<LoginViewModel>()
+class SignupFragment : BaseFragment() {
+    override val viewModel by viewModels<SignupViewModel>()
 
     override fun getViewModelVariable(): Int = BR.vm
 
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        FragmentLoginBinding.inflate(inflater, container, false).apply {
+        FragmentSignupBinding.inflate(inflater, container, false).apply {
             btnLogin.onSafeClickListener {
-                viewModel.onLogin()
-            }
-            tvSignup.onSafeClickListener {
-                findNavController().navigate(LoginFragmentDirections.toSignup())
+                viewModel.onSignup()
             }
         }
 }

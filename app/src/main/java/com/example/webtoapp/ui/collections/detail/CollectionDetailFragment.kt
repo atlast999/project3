@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webtoapp.BR
+import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.base.fragment.BaseFragment
 import com.example.webtoapp.base.util.collectLatestOnLifeCycle
-import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.FragmentCollectionDetailBinding
 import com.example.webtoapp.ui.collections.detail.adapter.CollectionDetailAdapter
 import dagger.hilt.android.AndroidEntryPoint

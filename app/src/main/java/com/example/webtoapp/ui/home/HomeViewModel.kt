@@ -1,17 +1,14 @@
 package com.example.webtoapp.ui.home
 
 import android.app.Application
-import androidx.lifecycle.viewModelScope
 import com.example.webtoapp.base.adapter.pagingFlow
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 import com.example.webtoapp.model.WebAppInstance
 import com.example.webtoapp.repository.ICloudRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -35,7 +32,7 @@ class HomeViewModel @Inject constructor(application: Application) : BaseViewMode
     )
 
     fun onNewAppAdded(app: WebAppInstance) {
-        viewModelScope.launch(Dispatchers.IO) {
+        runCoroutineTask {
             repository.createWebApp(app)
             flowValidatePage.emit(Unit)
         }

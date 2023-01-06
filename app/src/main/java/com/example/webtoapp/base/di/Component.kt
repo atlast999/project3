@@ -5,6 +5,8 @@ import com.example.webtoapp.BuildConfig
 import com.example.webtoapp.base.credential.CredentialManager
 import com.example.webtoapp.base.credential.ICredentialManager
 import com.example.webtoapp.base.network.Network
+import com.example.webtoapp.base.serialize.GsonSerializer
+import com.example.webtoapp.base.serialize.Serializer
 import com.example.webtoapp.repository.CloudRepository
 import com.example.webtoapp.repository.ICloudRepository
 import com.example.webtoapp.repository.service.ApiService
@@ -32,7 +34,8 @@ object RepositoryModule {
     fun provideCloudRepository(
         apiService: ApiService,
         credentialManager: ICredentialManager,
-    ): ICloudRepository = CloudRepository(apiService, credentialManager)
+        serializer: Serializer,
+    ): ICloudRepository = CloudRepository(apiService, credentialManager, serializer)
 
     @Provides
     @Singleton
@@ -40,6 +43,10 @@ object RepositoryModule {
         @ApplicationContext context: Context,
         credentialManager: ICredentialManager,
     ): ApiService = createService(BuildConfig.PRIMARY_API_GATEWAY, credentialManager)
+
+    @Provides
+    @Singleton
+    fun provideSerializer(): Serializer = GsonSerializer()
 }
 
 private inline fun <reified T> createService(

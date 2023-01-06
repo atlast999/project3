@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.example.webtoapp.ui.authentication.login.LoginViewModel" />
+            type="com.example.webtoapp.ui.authentication.signup.SignupViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -38,17 +38,6 @@
             app:hint="@{@string/label_app_url}"
             app:inputType="@{InputType.TYPE_TEXT_VARIATION_PASSWORD}"
             app:label="@{@string/label_app_url}" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_signup"
-            style="@style/Clickable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="@dimen/space_medium"
-            android:text="@string/label_signup"
-            android:textColor="@color/blue"
-            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_login"

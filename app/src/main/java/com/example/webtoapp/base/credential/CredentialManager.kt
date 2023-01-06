@@ -42,4 +42,12 @@ class CredentialManager(private val context: Context) : ICredentialManager {
             }
         }
     }
+
+    override fun clear() {
+        runBlocking {
+            context.dataStore.edit {
+                it.clear()
+            }
+        }
+    }
 }

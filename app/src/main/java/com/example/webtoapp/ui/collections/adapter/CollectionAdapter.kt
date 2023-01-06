@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.webtoapp.R
 import com.example.webtoapp.base.adapter.BindingHolder
 import com.example.webtoapp.base.adapter.BindingPagingAdapter
-import com.example.webtoapp.base.util.onSafeClickListener
+import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.databinding.ItemAppCollectionBinding
 import com.example.webtoapp.model.AppCollection
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.fragment.findNavController
+import com.example.webtoapp.base.dialog.DialogRequest
 import com.example.webtoapp.base.util.Direction
 import com.example.webtoapp.base.util.UiText
 import com.example.webtoapp.base.util.collectOnLifeCycle
@@ -30,6 +31,12 @@ abstract class BaseFragment : Fragment() {
                 state = Lifecycle.State.CREATED,
             ) {
                 handleDirection(it)
+            }
+            dialogRequestFlow.collectOnLifeCycle(
+                owner = this@BaseFragment,
+                state = Lifecycle.State.CREATED
+            ) {
+                dispatchDialogRequest(it)
             }
         }
     }
@@ -103,6 +110,11 @@ abstract class BaseFragment : Fragment() {
             is Direction.BackWard -> navController.navigateUp()
             is Direction.NavDirection -> navController.navigate(direction.direction)
         }
+    }
+
+    private fun dispatchDialogRequest(request: DialogRequest) {
+        val dialog = request.build()
+        dialog.show(requireActivity().supportFragmentManager, "RequestDialog")
     }
 
 }

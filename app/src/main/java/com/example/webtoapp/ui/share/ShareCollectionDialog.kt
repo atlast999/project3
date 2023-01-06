@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.BR
+import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.base.dialog.BaseDialog
-import com.example.webtoapp.base.util.onSafeClickListener
 import com.example.webtoapp.databinding.DialogShareCollectionBinding
 import dagger.hilt.android.AndroidEntryPoint
 

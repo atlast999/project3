@@ -31,6 +31,7 @@ sealed class UiText {
 
     companion object {
         fun from(value: String) = Dynamic(value)
+        fun from(@StringRes resId: Int) = StringResource(resId)
         fun from(@StringRes resId: Int, vararg args: Any) = StringResource(resId, args)
         fun from(@StringRes resId: Int, vararg args: UiText) = NestedStringResource(resId, *args)
     }

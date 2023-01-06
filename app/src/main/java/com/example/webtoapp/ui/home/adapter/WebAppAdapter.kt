@@ -7,7 +7,7 @@ import com.example.webtoapp.R
 import com.example.webtoapp.base.adapter.BindingHolder
 import com.example.webtoapp.base.adapter.BindingPagingAdapter
 import com.example.webtoapp.base.bindings.ImageBindingAdapter.setImage
-import com.example.webtoapp.base.util.onSafeClickListener
+import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.databinding.ItemWebAppBinding
 import com.example.webtoapp.model.WebAppInstance
 

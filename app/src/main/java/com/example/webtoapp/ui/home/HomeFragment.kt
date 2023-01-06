@@ -10,6 +10,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.webtoapp.BR
 import com.example.webtoapp.R
+import com.example.webtoapp.base.credential.ICredentialManager
 import com.example.webtoapp.base.fragment.BaseFragment
 import com.example.webtoapp.base.fragment.waitForBackStackEntryData
 import com.example.webtoapp.base.util.collectLatestOnLifeCycle
@@ -18,9 +19,14 @@ import com.example.webtoapp.databinding.FragmentHomeBinding
 import com.example.webtoapp.model.WebAppInstance
 import com.example.webtoapp.ui.home.adapter.WebAppAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
+
+    @Inject
+    lateinit var credentialManager: ICredentialManager
+
     override val viewModel by viewModels<HomeViewModel>()
     private lateinit var webAppAdapter: WebAppAdapter
     override fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?) =
@@ -74,6 +80,14 @@ class HomeFragment : BaseFragment() {
                         findNavController().navigate(
                             HomeFragmentDirections.toFindCollection()
                         )
+                        return@createOptionMenu true
+                    }
+                    R.id.item_logout -> {
+                        credentialManager.clear()
+                        findNavController().navigate(
+                            HomeFragmentDirections.popToLogin()
+                        )
+                        return@createOptionMenu true
                     }
                 }
                 return@createOptionMenu false
