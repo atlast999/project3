@@ -14,8 +14,8 @@ class LoginViewModel @Inject constructor(application: Application) : BaseViewMod
     @Inject
     lateinit var repository: ICloudRepository
 
-    val stateUsername = MutableStateFlow("")
-    val statePassword = MutableStateFlow("")
+    val stateUsername = MutableStateFlow("hoan1")
+    val statePassword = MutableStateFlow("hoan123")
     fun onLogin() {
         runCoroutineTask {
             repository.login(

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splash_fragment">
 
@@ -24,10 +23,12 @@
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.example.webtoapp.ui.authentication.login.LoginFragment"
-        android:label="LoginFragment">
+        android:label="@string/label_login">
 
         <action
             android:id="@+id/to_home_menu"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true"
             app:destination="@id/home_fragment" />
         <action
             android:id="@+id/to_signup"
@@ -37,17 +38,19 @@
     <fragment
         android:id="@+id/signup_fragment"
         android:name="com.example.webtoapp.ui.authentication.signup.SignupFragment"
-        android:label="SignupFragment">
+        android:label="@string/label_signup">
 
         <action
             android:id="@+id/to_home_menu"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true"
             app:destination="@id/home_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.webtoapp.ui.home.HomeFragment"
-        tools:layout="HomeFragment">
+        android:label="@string/label_my_apps">
 
         <action
             android:id="@+id/to_new_app"
@@ -65,7 +68,7 @@
         <action
             android:id="@+id/pop_to_login"
             app:destination="@id/login_fragment"
-            app:popUpTo="@id/login_fragment"
+            app:popUpTo="@id/home_fragment"
             app:popUpToInclusive="true" />
 
     </fragment>
@@ -91,6 +94,7 @@
         android:name="com.example.webtoapp.ui.share.ShareCollectionDialog" />
 
     <fragment
+        android:label="@string/label_collections"
         android:id="@+id/find_collection_fragment"
         android:name="com.example.webtoapp.ui.collections.FindCollectionFragment">
         <action
@@ -99,6 +103,7 @@
     </fragment>
 
     <fragment
+        android:label="@string/label_apps_of_collection"
         android:id="@+id/collection_detail_fragment"
         android:name="com.example.webtoapp.ui.collections.detail.CollectionDetailFragment">
         <argument

@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_medium"
             app:contentValue="@{vm.stateUsername}"
-            app:hint="@{@string/label_app_name}"
-            app:label="@{@string/label_app_name}" />
+            app:hint="@{@string/label_username}"
+            app:label="@{@string/label_username}" />
 
         <include
             android:id="@+id/layout_pass"
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_medium"
             app:contentValue="@{vm.statePassword}"
-            app:hint="@{@string/label_app_url}"
+            app:hint="@{@string/label_password}"
             app:inputType="@{InputType.TYPE_TEXT_VARIATION_PASSWORD}"
-            app:label="@{@string/label_app_url}" />
+            app:label="@{@string/label_password}" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_login"
