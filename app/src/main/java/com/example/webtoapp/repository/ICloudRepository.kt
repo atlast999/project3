@@ -8,6 +8,10 @@ interface ICloudRepository {
 
     suspend fun signup(request: AuthenticationRequest): AuthenticationResponse
 
+    /**
+     * An abstract function which perform login task at repository level
+     * @see CloudRepository.login for implementation
+     */
     suspend fun login(request: AuthenticationRequest): AuthenticationResponse
 
     suspend fun createWebApp(request: WebAppInstance)

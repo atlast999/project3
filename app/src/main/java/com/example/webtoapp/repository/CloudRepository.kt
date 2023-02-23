@@ -21,6 +21,14 @@ class CloudRepository(
         }
     }
 
+    /**
+     * The function using retrofit api to make HTTP request to the back-end server
+     * and then save the token into private storage for other api calls
+     * @param request: contains user authentication information
+     * @see AuthenticationRequest
+     * @return response from server which contains access token
+     * @see AuthenticationResponse
+     */
     override suspend fun login(request: AuthenticationRequest): AuthenticationResponse {
         return unwrap {
             service.login(request)

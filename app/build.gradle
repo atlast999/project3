@@ -83,3 +83,7 @@ dependencies {
 kapt {
     correctErrorTypes true
 }
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(file("../docs"))
+}

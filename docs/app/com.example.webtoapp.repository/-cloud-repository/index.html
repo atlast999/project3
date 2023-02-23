@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1" name="viewport">
+    <title>CloudRepository</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script async="async" src="../../../scripts/sourceset_dependencies.js" type="text/javascript"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script async="async" src="../../../scripts/clipboard.js" type="text/javascript"></script>
+<script async="async" src="../../../scripts/navigation-loader.js" type="text/javascript"></script>
+<script async="async" src="../../../scripts/platform-content-handler.js" type="text/javascript"></script>
+<script defer="defer" src="../../../scripts/main.js" type="text/javascript"></script>
+<script async="async" src="../../../scripts/prism.js" type="text/javascript"></script>
+<script defer="defer" src="../../../scripts/symbol-parameters-wrapper_deferred.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>app</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="app::com.example.webtoapp.repository/CloudRepository///PointingToDeclaration//492899073">
+  <div class="breadcrumbs"><a href="../../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">com.example.webtoapp.repository</a><span class="delimiter">/</span><span class="current">CloudRepository</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Cloud</span><wbr></wbr><span><span>Repository</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CloudRepository</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">service<span class="token operator">: </span><a href="../../com.example.webtoapp.repository.service/-api-service/index.html">ApiService</a><span class="token punctuation">, </span></span><span class="parameter ">credentialManager<span class="token operator">: </span><a href="../../com.example.webtoapp.base.credential/-i-credential-manager/index.html">ICredentialManager</a><span class="token punctuation">, </span></span><span class="parameter ">serializer<span class="token operator">: </span><a href="../../com.example.webtoapp.base.serialize/-serializer/index.html">Serializer</a></span></span><span class="token punctuation">)</span> : <a href="../../com.example.webtoapp.base.repository/-base-repository/index.html">BaseRepository</a>, <a href="../-i-cloud-repository/index.html">ICloudRepository</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a anchor-label="CloudRepository" data-filterable-set=":app:dokkaHtml/release" data-name="760314977%2FConstructors%2F492899073" id="760314977%2FConstructors%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-cloud-repository.html"><span>Cloud</span><wbr></wbr><span><span>Repository</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="760314977%2FConstructors%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-cloud-repository.html"><span class="token function">CloudRepository</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">service<span class="token operator">: </span><a href="../../com.example.webtoapp.repository.service/-api-service/index.html">ApiService</a><span class="token punctuation">, </span></span><span class="parameter ">credentialManager<span class="token operator">: </span><a href="../../com.example.webtoapp.base.credential/-i-credential-manager/index.html">ICredentialManager</a><span class="token punctuation">, </span></span><span class="parameter ">serializer<span class="token operator">: </span><a href="../../com.example.webtoapp.base.serialize/-serializer/index.html">Serializer</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a anchor-label="createWebApp" data-filterable-set=":app:dokkaHtml/release" data-name="-1807710010%2FFunctions%2F492899073" id="-1807710010%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="create-web-app.html"><span>create</span><wbr></wbr><span>Web</span><wbr></wbr><span><span>App</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1807710010%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="create-web-app.html"><span class="token function">createWebApp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.model/-web-app-instance/index.html">WebAppInstance</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="getCollectionDetail" data-filterable-set=":app:dokkaHtml/release" data-name="-1641799534%2FFunctions%2F492899073" id="-1641799534%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="get-collection-detail.html"><span>get</span><wbr></wbr><span>Collection</span><wbr></wbr><span><span>Detail</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1641799534%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="get-collection-detail.html"><span class="token function">getCollectionDetail</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">collectionId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-request/index.html">PagingRequest</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-model/index.html">PagingModel</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.webtoapp.model/-web-app-instance/index.html">WebAppInstance</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="getCollectionList" data-filterable-set=":app:dokkaHtml/release" data-name="-1883457046%2FFunctions%2F492899073" id="-1883457046%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="get-collection-list.html"><span>get</span><wbr></wbr><span>Collection</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1883457046%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="get-collection-list.html"><span class="token function">getCollectionList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-request/index.html">PagingRequest</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-model/index.html">PagingModel</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.webtoapp.model/-app-collection/index.html">AppCollection</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="getMyList" data-filterable-set=":app:dokkaHtml/release" data-name="-2034349540%2FFunctions%2F492899073" id="-2034349540%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="get-my-list.html"><span>get</span><wbr></wbr><span>My</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2034349540%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="get-my-list.html"><span class="token function">getMyList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-request/index.html">PagingRequest</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.base.domain/-paging-model/index.html">PagingModel</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.webtoapp.model/-web-app-instance/index.html">WebAppInstance</a><span class="token operator">&gt;</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="login" data-filterable-set=":app:dokkaHtml/release" data-name="2131055159%2FFunctions%2F492899073" id="2131055159%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="login.html"><span><span>login</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2131055159%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="login.html"><span class="token function">login</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.model/-authentication-request/index.html">AuthenticationRequest</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.model/-authentication-response/index.html">AuthenticationResponse</a></div><div class="brief "><p class="paragraph">The function using retrofit api to make HTTP request to the back-end server and then save the token into private storage for other api calls</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="shareMyList" data-filterable-set=":app:dokkaHtml/release" data-name="-2132336101%2FFunctions%2F492899073" id="-2132336101%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="share-my-list.html"><span>share</span><wbr></wbr><span>My</span><wbr></wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2132336101%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="share-my-list.html"><span class="token function">shareMyList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.model/-share-my-web-app-list-request/index.html">ShareMyWebAppListRequest</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="signup" data-filterable-set=":app:dokkaHtml/release" data-name="-661874924%2FFunctions%2F492899073" id="-661874924%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="signup.html"><span><span>signup</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-661874924%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="signup.html"><span class="token function">signup</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="../../com.example.webtoapp.model/-authentication-request/index.html">AuthenticationRequest</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.model/-authentication-response/index.html">AuthenticationResponse</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="takeCollection" data-filterable-set=":app:dokkaHtml/release" data-name="1284216694%2FFunctions%2F492899073" id="1284216694%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="take-collection.html"><span>take</span><wbr></wbr><span><span>Collection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1284216694%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="take-collection.html"><span class="token function">takeCollection</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">collectionId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a anchor-label="unwrap" data-filterable-set=":app:dokkaHtml/release" data-name="1422481631%2FFunctions%2F492899073" id="1422481631%2FFunctions%2F492899073"></a>
+        <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../com.example.webtoapp.base.repository/-base-repository/unwrap.html"><span><span>unwrap</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422481631%2FFunctions%2F492899073"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.webtoapp.base.repository/-base-repository/unwrap.html">T</a><span class="token operator">&gt; </span><a href="../../com.example.webtoapp.base.repository/-base-repository/unwrap.html"><span class="token function">unwrap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><span class="token keyword">suspend </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../../com.example.webtoapp.base.domain/-base-response/index.html">BaseResponse</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../com.example.webtoapp.base.repository/-base-repository/unwrap.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.example.webtoapp.base.repository/-base-repository/unwrap.html">T</a></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
