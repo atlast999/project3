@@ -3,7 +3,6 @@ package com.example.webtoapp.ui.authentication.login
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.BR
 import com.example.webtoapp.base.bindings.ViewBindingAdapter.onSafeClickListener
 import com.example.webtoapp.base.fragment.BaseFragment
@@ -22,7 +21,7 @@ class LoginFragment : BaseFragment() {
                 viewModel.onLogin()
             }
             tvSignup.onSafeClickListener {
-                findNavController().navigate(LoginFragmentDirections.toSignup())
+                navigate(LoginFragmentDirections.toSignup())
             }
         }
 }

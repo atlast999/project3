@@ -1,10 +1,9 @@
 package com.example.webtoapp.base.viewmodel
 
-import android.app.Application
 import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.annotation.MainThread
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavArgs
 import androidx.navigation.NavArgsLazy
@@ -24,7 +23,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
+abstract class BaseViewModel : ViewModel() {
 
     var argsRef by weakRef<Bundle>()
     private val mDirectionChanel = Channel<Direction>(
@@ -83,6 +82,7 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
         viewModelScope.launch(coroutineContext) {
             block.invoke(this)
         }
+
     }
 
 }

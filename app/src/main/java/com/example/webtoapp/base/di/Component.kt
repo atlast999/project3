@@ -7,8 +7,8 @@ import com.example.webtoapp.base.credential.ICredentialManager
 import com.example.webtoapp.base.network.Network
 import com.example.webtoapp.base.serialize.GsonSerializer
 import com.example.webtoapp.base.serialize.Serializer
-import com.example.webtoapp.repository.CloudRepository
-import com.example.webtoapp.repository.ICloudRepository
+import com.example.webtoapp.repository.RemoteRepository
+import com.example.webtoapp.repository.Repository
 import com.example.webtoapp.repository.service.ApiService
 import dagger.Module
 import dagger.Provides
@@ -35,7 +35,7 @@ object RepositoryModule {
         apiService: ApiService,
         credentialManager: ICredentialManager,
         serializer: Serializer,
-    ): ICloudRepository = CloudRepository(apiService, credentialManager, serializer)
+    ): Repository = RemoteRepository(apiService, credentialManager, serializer)
 
     @Provides
     @Singleton

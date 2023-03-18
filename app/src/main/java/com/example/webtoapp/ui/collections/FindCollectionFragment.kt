@@ -3,7 +3,6 @@ package com.example.webtoapp.ui.collections
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.webtoapp.BR
 import com.example.webtoapp.base.fragment.BaseFragment
@@ -26,7 +25,7 @@ class FindCollectionFragment : BaseFragment() {
             recCollection.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = CollectionAdapter {
-                    findNavController().navigate(
+                    navigate(
                         FindCollectionFragmentDirections.toDetail(it.id)
                     )
                 }.also {

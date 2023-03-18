@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.webtoapp.BR
@@ -34,7 +32,7 @@ class HomeFragment : BaseFragment() {
             recApp.apply {
                 layoutManager = GridLayoutManager(context, 3)
                 adapter = WebAppAdapter {
-                    findNavController().navigate(
+                    navigate(
                         HomeFragmentDirections.toBrowser(it)
                     )
                 }.also {
@@ -55,36 +53,33 @@ class HomeFragment : BaseFragment() {
     override fun onReady() {
         super.onReady()
         createOptionMenu(
-            onCreate = { menu, menuInflater ->
-                menu.clear()
-                menuInflater.inflate(R.menu.home_menu, menu)
-            },
+            menuRes = R.menu.home_menu,
             onItemSelected = { menuItem ->
                 when (menuItem.itemId) {
                     R.id.item_new_app -> {
                         waitForBackStackEntryData<WebAppInstance>(key = "NEW_APP") {
                             viewModel.onNewAppAdded(it)
                         }
-                        findNavController().navigate(
+                        navigate(
                             HomeFragmentDirections.toNewApp()
                         )
                         return@createOptionMenu true
                     }
                     R.id.item_share_collection -> {
-                        findNavController().navigate(
+                        navigate(
                             HomeFragmentDirections.toShare()
                         )
                         return@createOptionMenu true
                     }
                     R.id.item_get_collection -> {
-                        findNavController().navigate(
+                        navigate(
                             HomeFragmentDirections.toFindCollection()
                         )
                         return@createOptionMenu true
                     }
                     R.id.item_logout -> {
                         credentialManager.clear()
-                        findNavController().navigate(
+                        navigate(
                             HomeFragmentDirections.popToLogin()
                         )
                         return@createOptionMenu true

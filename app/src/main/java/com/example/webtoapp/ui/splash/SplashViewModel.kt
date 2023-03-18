@@ -1,6 +1,5 @@
 package com.example.webtoapp.ui.splash
 
-import android.app.Application
 import androidx.lifecycle.viewModelScope
 import com.example.webtoapp.base.credential.ICredentialManager
 import com.example.webtoapp.base.util.notNullOrEmptyLet
@@ -11,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
+class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject
     lateinit var credentialManager: ICredentialManager

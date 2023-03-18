@@ -1,21 +1,20 @@
 package com.example.webtoapp.ui.home
 
-import android.app.Application
 import com.example.webtoapp.base.adapter.pagingFlow
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 import com.example.webtoapp.model.WebAppInstance
-import com.example.webtoapp.repository.ICloudRepository
+import com.example.webtoapp.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
+class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject
-    lateinit var repository: ICloudRepository
+    lateinit var repository: Repository
 
     private val flowValidatePage = MutableSharedFlow<Unit>()
 

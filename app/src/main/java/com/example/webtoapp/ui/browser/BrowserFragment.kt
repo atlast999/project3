@@ -9,7 +9,7 @@ import android.webkit.WebViewClient
 import androidx.activity.addCallback
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.enableSavedStateHandles
 import androidx.navigation.fragment.navArgs
 import com.example.webtoapp.BR
 import com.example.webtoapp.base.fragment.BaseFragment
@@ -36,9 +36,10 @@ class BrowserFragment : BaseFragment() {
                 if (webView.canGoBack()) {
                     webView.goBack()
                 } else {
-                    findNavController().navigateUp()
+                    navigateUp()
                 }
             }
+            enableSavedStateHandles()
         }
 
     override fun getViewModelVariable(): Int = BR.vm

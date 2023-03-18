@@ -1,18 +1,17 @@
 package com.example.webtoapp.ui.authentication.signup
 
-import android.app.Application
 import com.example.webtoapp.base.viewmodel.BaseViewModel
 import com.example.webtoapp.model.AuthenticationRequest
-import com.example.webtoapp.repository.ICloudRepository
+import com.example.webtoapp.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class SignupViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
+class SignupViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject
-    lateinit var repository: ICloudRepository
+    lateinit var repository: Repository
 
     val stateUsername = MutableStateFlow("hoan1")
     val statePassword = MutableStateFlow("hoan123")

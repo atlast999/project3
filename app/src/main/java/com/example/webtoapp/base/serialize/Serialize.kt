@@ -1,5 +1,6 @@
 package com.example.webtoapp.base.serialize
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
 interface Serializer {
@@ -11,9 +12,7 @@ inline fun <reified T> Serializer.deserialize(raw: String) = deserialize(raw, T:
 
 class GsonSerializer : Serializer {
 
-    private val gson = GsonBuilder()
-        .excludeFieldsWithoutExposeAnnotation()
-        .create()
+    private val gson = provideGson()
 
     override fun <T> deserialize(raw: String, clazz: Class<T>): T {
         return gson.fromJson(raw, clazz)
@@ -21,6 +20,12 @@ class GsonSerializer : Serializer {
 
     override fun <T> serialize(value: T): String {
         return gson.toJson(value)
+    }
+
+    companion object {
+        fun provideGson(): Gson = GsonBuilder()
+            .excludeFieldsWithoutExposeAnnotation()
+            .create()
     }
 
 }

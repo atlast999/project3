@@ -8,11 +8,11 @@ import com.example.webtoapp.base.serialize.Serializer
 import com.example.webtoapp.model.*
 import com.example.webtoapp.repository.service.ApiService
 
-class CloudRepository(
+class RemoteRepository(
     private val service: ApiService,
     private val credentialManager: ICredentialManager,
     serializer: Serializer,
-) : BaseRepository(serializer), ICloudRepository {
+) : BaseRepository(serializer), Repository {
     override suspend fun signup(request: AuthenticationRequest): AuthenticationResponse {
         return unwrap {
             service.signup(request)
@@ -29,52 +29,38 @@ class CloudRepository(
      * @return response from server which contains access token
      * @see AuthenticationResponse
      */
-    override suspend fun login(request: AuthenticationRequest): AuthenticationResponse {
-        return unwrap {
-            service.login(request)
-        }.also {
-            credentialManager.saveToken(it.token)
-        }
+    override suspend fun login(request: AuthenticationRequest): AuthenticationResponse = unwrap {
+        service.login(request)
+    }.also {
+        credentialManager.saveToken(it.token)
     }
 
-    override suspend fun createWebApp(request: WebAppInstance) {
-        return unwrap {
-            service.createWebApp(request)
-        }
+    override suspend fun createWebApp(request: WebAppInstance) = unwrap {
+        service.createWebApp(request)
     }
 
-    override suspend fun getMyList(request: PagingRequest): PagingModel<WebAppInstance> {
-        return unwrap {
-            service.getMyList(request.buildQuery())
-        }
+    override suspend fun getMyList(request: PagingRequest): PagingModel<WebAppInstance> = unwrap {
+        service.getMyList(request.buildQuery())
     }
 
-    override suspend fun shareMyList(request: ShareMyWebAppListRequest) {
-        return unwrap {
-            service.shareMyList(request)
-        }
+    override suspend fun shareMyList(request: ShareMyWebAppListRequest) = unwrap {
+        service.shareMyList(request)
     }
 
-    override suspend fun getCollectionList(request: PagingRequest): PagingModel<AppCollection> {
-        return unwrap {
+    override suspend fun getCollectionList(request: PagingRequest): PagingModel<AppCollection> =
+        unwrap {
             service.getCollectionList(request.buildQuery())
         }
-    }
 
     override suspend fun getCollectionDetail(
         collectionId: String,
         request: PagingRequest
-    ): PagingModel<WebAppInstance> {
-        return unwrap {
-            service.getCollectionDetail(collectionId, request.buildQuery())
-        }
+    ): PagingModel<WebAppInstance> = unwrap {
+        service.getCollectionDetail(collectionId, request.buildQuery())
     }
 
-    override suspend fun takeCollection(collectionId: String) {
-        return unwrap {
-            service.takeCollection(collectionId)
-        }
+    override suspend fun takeCollection(collectionId: String) = unwrap {
+        service.takeCollection(collectionId)
     }
-
 
 }

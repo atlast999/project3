@@ -5,7 +5,7 @@ import android.net.Uri
 import androidx.annotation.IntRange
 import com.example.webtoapp.base.BaseApplication
 import com.example.webtoapp.base.credential.ICredentialManager
-import com.google.gson.GsonBuilder
+import com.example.webtoapp.base.serialize.GsonSerializer
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -29,9 +29,7 @@ object Network {
         .build()
 
     private fun gsonConverter(): GsonConverterFactory = GsonConverterFactory.create(
-        GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation()
-            .create()
+        GsonSerializer.provideGson()
     )
 
     private fun okHttpClient(

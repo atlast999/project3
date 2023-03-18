@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.annotation.CallSuper
+import androidx.annotation.MenuRes
 import androidx.core.view.MenuProvider
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.webtoapp.base.dialog.DialogRequest
 import com.example.webtoapp.base.util.Direction
@@ -20,6 +22,7 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract val viewModel: BaseViewModel
     open var binding: ViewDataBinding? = null
+    private val navController by lazy { findNavController() }
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,13 +78,15 @@ abstract class BaseFragment : Fragment() {
     open fun onReady() {}
 
     protected fun createOptionMenu(
-        onCreate: (Menu, MenuInflater) -> Unit,
+        @MenuRes menuRes: Int,
+        onCreate: (Menu) -> Unit = { it.clear() },
         onItemSelected: (MenuItem) -> Boolean = { false }
     ) {
         requireActivity().addMenuProvider(
             object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    onCreate.invoke(menu, menuInflater)
+                    onCreate.invoke(menu)
+                    menuInflater.inflate(menuRes, menu)
                 }
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -104,8 +109,15 @@ abstract class BaseFragment : Fragment() {
         Toast.makeText(requireContext(), message.getBy(requireContext()), Toast.LENGTH_SHORT).show()
     }
 
+    protected fun navigate(direction: NavDirections) {
+        handleDirection(Direction.NavDirection(direction))
+    }
+
+    protected fun navigateUp() {
+        handleDirection(Direction.BackWard)
+    }
+
     private fun handleDirection(direction: Direction) {
-        val navController by lazy { findNavController() }
         when (direction) {
             is Direction.BackWard -> navController.navigateUp()
             is Direction.NavDirection -> navController.navigate(direction.direction)

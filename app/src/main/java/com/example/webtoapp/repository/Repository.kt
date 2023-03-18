@@ -4,13 +4,13 @@ import com.example.webtoapp.base.domain.PagingModel
 import com.example.webtoapp.base.domain.PagingRequest
 import com.example.webtoapp.model.*
 
-interface ICloudRepository {
+interface Repository {
 
     suspend fun signup(request: AuthenticationRequest): AuthenticationResponse
 
     /**
      * An abstract function which perform login task at repository level
-     * @see CloudRepository.login for implementation
+     * @see RemoteRepository.login for implementation
      */
     suspend fun login(request: AuthenticationRequest): AuthenticationResponse
 
