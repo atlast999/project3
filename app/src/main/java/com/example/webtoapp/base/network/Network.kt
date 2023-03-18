@@ -57,7 +57,7 @@ object Network {
             if (length > 51200 /*50 kB*/)
                 Platform.get().log(
                     level = Platform.WARN,
-                    message = "Log omitted cause tldr; $length in bytes"
+                    message = "Too long don't read: $length in bytes"
                 )
             else Platform.get().log(Uri.decode(it))
         }).apply {

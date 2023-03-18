@@ -40,7 +40,6 @@ object RepositoryModule {
     @Provides
     @Singleton
     fun provideApiService(
-        @ApplicationContext context: Context,
         credentialManager: ICredentialManager,
     ): ApiService = createService(BuildConfig.PRIMARY_API_GATEWAY, credentialManager)
 

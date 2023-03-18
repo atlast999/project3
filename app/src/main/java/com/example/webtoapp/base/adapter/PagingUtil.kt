@@ -17,9 +17,11 @@ fun <Result : Any> BaseViewModel.pagingFlow(
     invalidationFlows: List<Flow<*>>,
 ): Flow<PagingData<Result>> {
     val pagingSourceFlow = MutableStateFlow<PagingSource<*, *>?>(null)
-    flowOf(*invalidationFlows.toTypedArray()).flattenMerge().collectLatestInScope(viewModelScope) {
-        pagingSourceFlow.value?.invalidate()
-    }
+    invalidationFlows.merge().conflate()
+//    flowOf(*invalidationFlows.toTypedArray()).flattenMerge()
+        .collectLatestInScope(viewModelScope) {
+            pagingSourceFlow.value?.invalidate()
+        }
     return Pager(
         config = PagingConfig(
             pageSize = request.pageSize,

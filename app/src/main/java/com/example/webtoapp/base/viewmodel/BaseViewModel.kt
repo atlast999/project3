@@ -15,7 +15,6 @@ import com.example.webtoapp.base.util.UiText
 import com.example.webtoapp.base.util.weakRef
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -76,14 +75,12 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     protected fun runCoroutineTask(
-        coroutineContext: CoroutineContext = Dispatchers.IO + defaultExceptionHandler,
+        coroutineContext: CoroutineContext = defaultExceptionHandler,
         block: suspend CoroutineScope.() -> Unit,
-    ) {
-        viewModelScope.launch(coroutineContext) {
-            block.invoke(this)
-        }
-
+    ) = viewModelScope.launch(coroutineContext) {
+        block.invoke(this)
     }
+
 
 }
 
